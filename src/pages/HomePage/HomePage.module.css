@@ -1,0 +1,57 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.join {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.btn {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  background-color: #15f4e5;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.navbtn {
+  text-align: center;
+  color: black;
+  padding: 15px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  background-color: #15f4e5;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  width: 150px;
+}
+
+.login {
+  text-align: center;
+}
+
+.link {
+  text-decoration: underline;
+  color: #15f4e5;
+  font-weight: 600;
+}
