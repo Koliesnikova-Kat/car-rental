@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import s from './Header.module.css';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,12 +15,8 @@ export default function Header() {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const handleLogout = () => {
-    dispatch(logout())
-      .unwrap()
-      .then(() => navigate('/', { replace: true }));
+    dispatch(logout());
   };
 
   return (
@@ -29,9 +25,11 @@ export default function Header() {
         <NavLink to='/' className={buildLinkClass}>
           Home
         </NavLink>
-        {isLoggedIn && <NavLink to='/contacts' className={buildLinkClass}>
-          Contacts
-        </NavLink>}
+        {isLoggedIn && (
+          <NavLink to='/contacts' className={buildLinkClass}>
+            Contacts
+          </NavLink>
+        )}
       </nav>
 
       <nav>

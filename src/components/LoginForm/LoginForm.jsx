@@ -2,7 +2,7 @@ import { Field, Form, Formik } from 'formik';
 import s from './LoginForm.module.css';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operations';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 export default function LoginForm() {
@@ -13,19 +13,21 @@ export default function LoginForm() {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   const handleSubmit = (values, options) => {
     dispatch(login(values))
       .unwrap()
-      .then(() => navigate('/contacts', {replace: true}))
+      .then(() => toast.success('You`ve been successfully logged in!'))
       .catch(() => toast.error('Invalid Data!'));
-    
+
     options.resetForm();
   };
 
   return (
     <>
+      <Link to={'/'} className={s.home}>
+        Back to Home Page
+      </Link>
+
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form className={s.form}>
           <label className={s.label}>
@@ -41,6 +43,13 @@ export default function LoginForm() {
           </button>
         </Form>
       </Formik>
+
+      <p className={s.redirect}>
+        Still have no account?{' '}
+        <Link to={'/register'} className={s.redirectlink}>
+          Register here!
+        </Link>
+      </p>
     </>
   );
 }

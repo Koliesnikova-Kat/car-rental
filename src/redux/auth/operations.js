@@ -6,7 +6,7 @@ export const api = axios.create({
 });
 
 const setAuthHeader = (token) => {
-  api.defaults.headers.common.authorization = `Bearer ${token}`;
+  api.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 const clearAuthHeader = () => {
@@ -46,20 +46,16 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const current = createAsyncThunk('auth/current', async (_, thunkAPI) => {
-  try {
-    const { data } = await api.get('/users');
-    return data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
-  }
-});
-
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
-  async ({ email, password }, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const { data } = await api.post('/users', { email, password });
+      const savedToken = thunkAPI.getState().auth.token;
+      if (savedToken === null) {
+        return thunkAPI.rejectWithValue('Token doesn`t exist!');
+      }
+      setAuthHeader(savedToken);
+      const { data } = await api.get('/users/current');
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

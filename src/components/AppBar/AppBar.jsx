@@ -1,4 +1,4 @@
-import UserMenu from '../../components/UserMenu/UserMenu';
+import UserMenu from '../UserMenu/UserMenu';
 import { AuthNav } from '../AuthNav/AuthNav';
 import { Navigation } from '../Navigation/Navigation';
 

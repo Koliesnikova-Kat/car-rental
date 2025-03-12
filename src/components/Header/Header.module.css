@@ -1,36 +1,35 @@
 .link {
   text-decoration: none;
   color: black;
-  font-size: 30px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .active {
-  color: rgb(30, 0, 255);
-  font-weight: 600;
+  color: #15f4e5;
+  font-size: 22px;
   text-decoration: underline;
 }
 
 header {
   display: flex;
   justify-content: space-between;
-  background-color: #15f4e5;
   padding: 30px;
+  border-bottom: 1px solid black;
 }
 
 nav {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .button {
   width: auto;
-  margin: 0 auto;
-  font-size: 20px;
-  background-color: rgb(198, 191, 191);
-  border-color: black;
+  font-size: 15px;
+  background-color: #15f4e5;
 }
