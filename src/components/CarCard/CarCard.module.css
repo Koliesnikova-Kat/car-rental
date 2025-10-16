@@ -1,0 +1,137 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: flex-start;
+  gap: 28px;
+  flex: 1 0 0;
+  width: 276px;
+  background: #fff;
+}
+
+.carCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.carInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.heart {
+  all: unset;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  cursor: pointer;
+  transition: transform 0.15s ease, background;
+}
+
+.heart:hover {
+  transform: scale(1.1);
+  background: transparent;
+}
+
+.heart:focus {
+  background: transparent;
+}
+
+.heartFilled {
+  all: unset;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  cursor: pointer;
+  transition: transform 0.15s ease, background;
+}
+
+.heartFilled:hover {
+  transform: scale(1.1);
+  background: transparent;
+}
+
+.heartIcon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  pointer-events: none;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 20, 23, 0.5) 2.5%,
+    rgba(18, 20, 23, 0) 41.07%
+  );
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--main, #101828);
+  background: none;
+  border: none;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 125%;
+}
+
+.title {
+  color: var(--main, #101828);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 125%;
+}
+
+.model {
+  color: var(--button, #3470ff);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  color: var(--gray, #8d929a);
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.navBtn {
+  display: flex;
+  width: 276px;
+  padding: 12px 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: var(--button, #3470ff);
+  color: var(--white, #fff);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.navBtn:hover,
+.navBtn:focus {
+  background: var(--button-hover, #0b44cd);
+}

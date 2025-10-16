@@ -1,35 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import s from './HomePage.module.css';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
 
 export default function HomePage() {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <section className={s.home}>
-      <h1>
-        This is your best webapp to keep all your contacts organized and safe!
-      </h1>
 
-      {!isLoggedIn && (
-        <>
-          <h2 className={s.join}>Join us today!</h2>
-          <p className={s.register}>
-            Press the REGISTER button below and let`s get started!
-          </p>
-          <NavLink to='/register' className={s.navbtn}>
-            Register
-          </NavLink>
-          <p className={s.login}>
-            Already have an account?{' '}
-            <NavLink to='/login' className={s.link}>
-              Log In
-            </NavLink>{' '}
-            here!
-          </p>
-        </>
-      )}
+      <div className={s.content}>
+        <h1>Find your perfect rental car</h1>
+  
+        <h2>Reliable and budget-friendly rentals for any journey</h2>
+  
+        <NavLink to='/catalog' className={s.navbtn}>
+          View Catalog
+        </NavLink>
+      </div>
     </section>
   );
 }

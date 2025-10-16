@@ -3,8 +3,12 @@ a {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Manrope;
   line-height: 1.5;
+  color: var(--main, #101828);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -29,13 +33,23 @@ img {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  display: flex;
+  width: 276px;
+  padding: 12px 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  border: none;
+  background: var(--button, #3470ff);
+  color: var(--white, #fff);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s;
+}
+
+button:hover,
+button:focus {
+  background: var(--button-hover, #0b44cd);
 }

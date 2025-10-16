@@ -1,33 +1,40 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authReducer } from './auth/slice';
-import { contactsReducer } from './contacts/slice';
+import { carsReducer } from './cars/slice';
 import { filtersReducer } from './filters/slice';
-import storage from 'redux-persist/lib/storage';
 import {
+  persistStore,
+  persistReducer,
   FLUSH,
   PAUSE,
   PERSIST,
-  persistReducer,
-  persistStore,
   PURGE,
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { favoritesReducer } from '../redux/favorites/slice';
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 
-const persistConfig = {
-  key: 'auth-data',
-  version: 1,
+const favoritesPersistConfig = {
+  key: 'favorites',
   storage,
-  whitelist: ['token'],
+  version: 2,
+  stateReconciler: hardSet,
+  migrate: async (persistedState) => {
+    const raw = Array.isArray(persistedState)
+      ? persistedState
+      : persistedState?.items && Array.isArray(persistedState.items)
+      ? persistedState.items
+      : [];
+    return raw.map(String);
+  },
 };
-
-// const stage = import.meta.env.MODE;
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(persistConfig, authReducer),
-    contacts: contactsReducer,
+    cars: carsReducer,
     filters: filtersReducer,
+    favorites: persistReducer(favoritesPersistConfig, favoritesReducer),
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -36,8 +43,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  
-  // devTools: stage === 'development' ? true : false,
 });
 
 export const persistor = persistStore(store);
